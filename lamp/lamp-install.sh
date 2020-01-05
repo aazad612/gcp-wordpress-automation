@@ -43,12 +43,12 @@ WPPASS="wppass"
 WPHOST="lcoalhost"
 
 # MYSQL Setup Needs GUI
-sudo mysql -u root <<EOF
+sudo mysql -u root <<_EOF_
 UPDATE mysql.user SET Password=PASSWORD('$ROOTPASS') WHERE User='root';
 DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
 DELETE FROM mysql.user WHERE User='';
 DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
 FLUSH PRIVILEGES;
-EOF
+_EOF_
 
 sudo systemctl restart apache2

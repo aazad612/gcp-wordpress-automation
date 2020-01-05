@@ -16,12 +16,10 @@
 #=============================================================================
 #!/bin/bash
 . $HOME/.profile
-. $HOME/.bashrc
 
 #=============================================================================
 #   Setup GCP Resources
 #=============================================================================
-
 
 gcloud compute firewall-rules create lamp-allow-http \
 --action allow \
@@ -41,10 +39,16 @@ gcloud compute instances create lamp-mono-script-test-php-gd \
 #  Create bucket to hold the config scripts
 #  /etc/apache2/mods-enabled/dir.conf
 #  /var/www/html/wp-config.php
+#  /etc/apache2/apache2.conf
 #======================================
 gsutil mb gs://gcp-youtube-reference-scripts
 
+gsutil cp -r config gs://gcp-youtube-reference-scripts
 
+
+# Release 2
+# Secure
+# curl -s https://api.wordpress.org/secret-key/1.1/salt/
 
 
 
