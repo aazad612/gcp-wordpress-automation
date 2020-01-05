@@ -34,7 +34,8 @@ gcloud compute instances create lamp-mono-script-test-php-gd \
 --machine-type=f1-micro \
 --network-tier=standard \
 --preemptible \
---tags lamp-http-tags
+--tags lamp-http-tags \
+--metadata-from-file startup-script=vm-bootstrap.sh
 
 #  Create bucket to hold the config scripts
 #  /etc/apache2/mods-enabled/dir.conf

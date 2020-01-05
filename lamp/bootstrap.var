@@ -1,0 +1,20 @@
+#=============================================================================
+#  VM
+#=============================================================================
+VMNAME="$1"
+FWRULENAME=${VMNAME}-allow-http-icmp-ssh
+FWRULES="tcp:80,icmp,tcp:22"
+FWTAGS="allow-http-icmp-ssh"
+VMTYPE="f1-micro"
+BUCKETNAME="${VMNAME}-config-bucket"
+ENV="prod"
+SME="trainingwp"
+#=============================================================================
+#  MySQL
+#=============================================================================
+ROOTPASS="password"
+DBNAME="wordpress"
+WPUSER="wordpressuser"
+WPPASS="wppass"
+WPHOST="localhost"
+

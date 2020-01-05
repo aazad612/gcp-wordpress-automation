@@ -25,13 +25,7 @@ sudo apt install --assume-yes php-curl php-gd php-mbstring php-mcrypt php-xml ph
 
 #=============================================================================
 #  Database Setup
-#=============================================================================
-ROOTPASS="password"
-DBNAME="wordpress"
-WPUSER="wordpressuser"
-WPPASS="wppass"
-WPHOST="localhost"
-
+#============================================================================
 sudo mysql --host=${WPHOST} --user=root --password=${ROOTPASS} <<_EOF_
 CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 GRANT ALL ON wordpress.* TO '${WPUSER}'@'${WPHOST}' IDENTIFIED BY '${WPPASS}';
