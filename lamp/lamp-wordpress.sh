@@ -17,12 +17,18 @@ gcloud compute images list
 
 ###############
 
+gcloud compute instances create gcp-wordpress \
+--image-family=debian-9 \
+--image-project=debian-cloud \
+--machine-type=f1-micro \
+--preemptible
+
 
 gcloud compute instances create lamp-mono-script-test \
 --image-family=debian-9 \
 --image-project=debian-cloud \
---machine-type=f1-micro
---network-tier=standard
+--machine-type=f1-micro \
+--network-tier=standard \
 --preemptible
 
 
