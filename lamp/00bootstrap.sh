@@ -14,28 +14,33 @@
 #======================================
 #  Variables
 #======================================
-EXECDIR="/var/log/bootstrap"
 # VMNAME=$(curl http://metadata.google.internal/computeMetadata/v1/instance/hostname -H "Metadata-Flavor: Google")
-VMNAME=`hostname`
+BUCKETNAME="gcp-youtube-reference-scripts"
 
-. bootstrap.var ${VMNAME}
-#======================================
-#  Copy Files
-#======================================
+VMNAME=`hostname`
+EXECDIR="/var/log/bootstrap"
 mkdir -p ${EXECDIR}
 cd ${EXECDIR}
-gsutil cp -r gs://${BUCKET}/config .
 
 #======================================
 #  Copy Files
 #======================================
+gsutil cp -r gs://${BUCKETNAME}/lamp/config .
+gsutil cp gs://${BUCKETNAME}/lamp/00bootstrap.var .
+gsutil cp gs://${BUCKETNAME}/lamp/201-install-lamp.sh .
+gsutil cp gs://${BUCKETNAME}/lamp/301-install-wordpress.sh .
+chmod 700 *
 
+#======================================
+#  Execute the bootstrap sequence
+#======================================
+# populate variables
+. bootstrap.var ${VMNAME} > bootstrap.log
+# install LAMP stack
+. 201-install-lamp.sh > 201lamp.log
+# install wordpress stack
+. 301-install-wordpress.sh > 301lamp.log
 
+#=============================================================================
 
-
-
-
-
-
-
-
+export alias cdbs='cd ${EXECDIR}'

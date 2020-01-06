@@ -1,12 +1,14 @@
 #=============================================================================
 #  VM
 #=============================================================================
-VMNAME="$1"
-FWRULENAME=${VMNAME}-allow-http-icmp-ssh
+VMNAME=`hostname`
+EXECDIR="/var/log/bootstrap"
+FWRULENAME="wpgcp-allow-http-icmp-ssh"
 FWRULES="tcp:80,icmp,tcp:22"
 FWTAGS="allow-http-icmp-ssh"
 VMTYPE="f1-micro"
-BUCKETNAME="${VMNAME}-config-bucket"
+# BUCKETNAME="${VMNAME}-config-bucket"
+BUCKETNAME="gcp-youtube-reference-scripts"
 ENV="prod"
 SME="trainingwp"
 #=============================================================================
@@ -17,4 +19,4 @@ DBNAME="wordpress"
 WPUSER="wordpressuser"
 WPPASS="wppass"
 WPHOST="localhost"
-
+#=============================================================================

@@ -18,6 +18,7 @@
 #=============================================================================
 #!/bin/bash
 . $HOME/.profile
+. 00bootstrap.var
 
 #=============================================================================
 # Package Install
@@ -36,12 +37,6 @@ sudo apt install --assume-yes mysql-server=5.5.9999+default
 #=============================================================================
 #  MySQL Setup
 #=============================================================================
-ROOTPASS="password"
-DBNAME="wordpress"
-WPUSER="wordpressuser"
-WPPASS="wppass"
-WPHOST="lcoalhost"
-
 # MYSQL Setup Needs GUI
 sudo mysql -u root <<_EOF_
 UPDATE mysql.user SET Password=PASSWORD('$ROOTPASS') WHERE User='root';
